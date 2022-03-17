@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/details.css">
+    <link rel="icon" type="image/png" href="static/images/icons/Try-Buy.png">
+    <title>Product Details</title>
+</head>
+<body>
+    <div class = "card-wrapper">
+      {% for result in output%}
+        <div class = "card">
+          <!-- card left -->
+          <div class = "product-imgs">
+            <div class = "img-display">
+              <div class = "img-showcase">
+                <img src = "{{result.Img}}" alt = "shoe image">
+              </div>
+            </div>
+          </div>
+          
+          <!-- card right -->
+          <div class = "product-content">
+            <h2 class = "product-title">{{ result.Name }}</h2>
+            <h4 href = "#" class = "product-link">{{ result.Brand }}</h4>
+            <div class = "product-rating">
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-half-alt"></i>
+              <span>4.4</span>
+            </div>
+
+            <div class = "product-price">
+              <p class = "last-price">Old Price: <span>₹{{result.MRP}}</span></p>
+              <p class = "new-price">New Price: <span>₹{{result.Price}}</span></p>
+            </div>
+
+            <div class = "product-detail">
+              <h2>Ingredients present: </h2>
+              <p>{{ result.Ingredients }}</p>
+              <ul>
+                {% if result.Combination %}
+                <li>Combination</li>
+                {% endif %}
+                {% if result.Dry %}
+                <li>Dry</li>
+                {% endif %}
+                {% if result.Normal %}
+                <li>Normal </li>
+                {% endif %}
+                {% if result.Oily %}
+                <li>Oily</li>
+                {% endif %}
+                {% if result.Sensitive %}
+                <li>Sensitive</li>
+                {% endif %}   
+              </ul>
+            </div>
+            <a href="{{result.Label}}" class = "product-link" style="padding: 5px;padding-left: 10px;padding-right: 10px;font-size: larger;">TRY NOW</a>
+          {% endfor %}
+        </div>
+      </div>
+</body>
+</html>
